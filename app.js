@@ -28,7 +28,7 @@ app.get("/search", async (req, res) => {
         return res.status(400).send("Query term if required");
     }
     const page = await collection.find({terms:term}).toArray();
-    if (page.length === 0) {
+    if (page.length == 0) {
         return res.status(400).send("Data not found");
     }
     return res.status(200).send(page);
@@ -42,7 +42,7 @@ app.post("/crawl", async (req, res) => {
     }
 
     await collection.insertOne({title,terms: mySplit(content)});
-    res.status(200).send("Inserted successfully")
+    res.status(200).send("Inserted successfully");
 
 
 });
